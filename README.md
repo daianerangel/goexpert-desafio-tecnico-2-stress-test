@@ -4,4 +4,4 @@
 
 #### Run and Test project
 
-Execute `make run-app` 
+Execute `make run-app` ou `make-run-with-docker`

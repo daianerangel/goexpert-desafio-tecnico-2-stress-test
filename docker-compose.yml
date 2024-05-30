@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  loader-test:
+    build: .
+    image: loader-test
+    ports:
+      - "8080:8080"
