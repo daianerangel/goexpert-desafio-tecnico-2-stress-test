@@ -46,6 +46,9 @@ func init() {
 	rootCmd.PersistentFlags().String("url", "", "Url to be tested")
 	rootCmd.PersistentFlags().Int("requests", 0, "Number of requests")
 	rootCmd.PersistentFlags().Int("concurrency", 0, "Number of concurrent requests")
+	rootCmd.MarkPersistentFlagRequired("url")
+	rootCmd.MarkPersistentFlagRequired("requests")
+	rootCmd.MarkPersistentFlagRequired("concurrency")
 	loaderTest := newLoaderTest()
 	rootCmd.AddCommand(loaderTest)
 }
