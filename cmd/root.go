@@ -4,6 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"crypto/tls"
 	"errors"
 	"fmt"
 	"net/http"
@@ -80,12 +81,20 @@ func runLoaderTest() RunEFunc {
 		results := make(chan int, totalReqs)
 		var wg sync.WaitGroup
 
+		client := &http.Client{
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{
+					InsecureSkipVerify: true,
+				},
+			},
+		}
+
 		for i := 0; i < concurrency; i++ {
 			wg.Add(1)
 			go func() {
 				defer wg.Done()
 				for j := 0; j < totalReqs/concurrency; j++ {
-					resp, err := http.Get(url)
+					resp, err := client.Get(url)
 					if err != nil {
 						results <- 0
 						continue

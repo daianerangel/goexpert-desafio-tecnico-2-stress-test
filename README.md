@@ -2,6 +2,15 @@
 
 ## Instructions
 
-#### Run and Test project
+#### Build project
 
-Execute `make run-app` ou `make-run-with-docker`
+Execute `make build-image`
+
+
+#### Run project
+
+Execute `make run-app` 
+
+#### Test project
+
+Execute `run-with-docker-google-test` or `run-with-docker-fullcycle-test`
